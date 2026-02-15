@@ -7,70 +7,63 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #1a1a1a;
-            background: #fff;
-            line-height: 1.7;
+            margin: 0; padding: 0; color: #1a1a1a; background: #fff; line-height: 1.7;
         }
         .topbar {
-            background: #0f172a;
-            color: #fff;
-            padding: 10px 32px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 32px;
+            background: #0f172a; color: #fff; padding: 10px 32px; font-size: 14px;
+            display: flex; align-items: center; gap: 32px;
         }
         .topbar-logo { font-weight: 700; font-size: 17px; }
         .topbar-logo span { color: #38bdf8; }
         .topbar a { color: #94a3b8; text-decoration: none; font-size: 13px; }
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 32px 20px;
+        .layout { display: flex; max-width: 960px; margin: 0 auto; }
+        .sidebar {
+            width: 200px; padding: 24px 16px; border-right: 1px solid #e2e8f0;
+            font-size: 13px; flex-shrink: 0;
         }
+        .sidebar a { color: #64748b; text-decoration: none; display: block; padding: 4px 0; }
+        .sidebar a.active { color: #0969da; font-weight: 600; }
+        .sidebar .section-title { font-weight: 600; color: #0f172a; margin-top: 16px; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .container { flex: 1; padding: 32px 32px; max-width: 680px; }
         .breadcrumb { font-size: 12px; color: #888; margin-bottom: 20px; }
         .breadcrumb a { color: #0969da; text-decoration: none; }
         h1 { font-size: 24px; margin-bottom: 4px; }
         .badge {
-            display: inline-block;
-            background: #dbeafe;
-            color: #1e40af;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 1px 7px;
-            border-radius: 10px;
-            vertical-align: middle;
-            margin-left: 6px;
+            display: inline-block; background: #dbeafe; color: #1e40af;
+            font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 10px;
+            vertical-align: middle; margin-left: 6px;
         }
         .divider { border: none; border-top: 1px solid #e2e8f0; margin: 16px 0 24px; }
         h2 { font-size: 18px; margin-top: 28px; }
+        h3 { font-size: 15px; margin-top: 24px; color: #334155; }
         p { margin: 12px 0; }
         code {
-            background: #f1f5f9;
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 13px;
-            font-family: 'SF Mono', Consolas, monospace;
+            background: #f1f5f9; padding: 1px 5px; border-radius: 3px;
+            font-size: 13px; font-family: 'SF Mono', Consolas, monospace;
         }
+        pre {
+            background: #0f172a; color: #e2e8f0; padding: 14px 18px;
+            border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.5;
+        }
+        pre .comment { color: #64748b; }
+        .prereq {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;
+            padding: 14px 18px; margin: 16px 0; font-size: 14px;
+        }
+        .prereq strong { color: #334155; }
+        .callout {
+            background: #fffbeb; border-left: 4px solid #f59e0b;
+            padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px;
+        }
+        .callout strong { color: #92400e; }
         .nav {
-            margin-top: 36px;
-            padding: 14px;
-            background: #f0f9ff;
-            border: 1px solid #bae6fd;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 14px;
+            margin-top: 36px; padding: 14px; background: #f0f9ff;
+            border: 1px solid #bae6fd; border-radius: 6px; text-align: center; font-size: 14px;
         }
         .nav a { color: #0969da; text-decoration: none; font-weight: 600; }
         .footer {
-            margin-top: 48px;
-            padding-top: 16px;
-            border-top: 1px solid #e2e8f0;
-            font-size: 11px;
-            color: #aaa;
-            text-align: center;
+            margin-top: 48px; padding-top: 16px; border-top: 1px solid #e2e8f0;
+            font-size: 11px; color: #aaa; text-align: center;
         }
     </style>
 </head>
@@ -79,23 +72,74 @@
         <div class="topbar-logo">Iso<span>Layer</span></div>
         <a href="#">Docs</a>
         <a href="#">API Reference</a>
+        <a href="#">SDK</a>
+        <a href="#">Community</a>
         <a href="#">GitHub</a>
     </div>
-    <div class="container">
-        <div class="breadcrumb">
-            <a href="#">Docs</a> / <a href="#">Getting Started</a> / Step 1
+    <div class="layout">
+        <div class="sidebar">
+            <div class="section-title">Getting Started</div>
+            <a href="#" class="active">Sandbox Setup</a>
+            <a href="./part2">Verify Environment</a>
+            <a href="./part3">Initialize Workspace</a>
+            <div class="section-title">Core Concepts</div>
+            <a href="#">Recovery Mounts</a>
+            <a href="#">State Snapshots</a>
+            <a href="#">Rollback Engine</a>
+            <div class="section-title">API Reference</div>
+            <a href="#">isolayer.init()</a>
+            <a href="#">isolayer.snapshot()</a>
+            <a href="#">isolayer.rollback()</a>
+            <div class="section-title">Guides</div>
+            <a href="#">CI/CD Integration</a>
+            <a href="#">Production Deployment</a>
+            <a href="#">Troubleshooting</a>
         </div>
-        <h1>Getting Started with IsoLayer <span class="badge">v2.4.0</span></h1>
-        <hr class="divider">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#">Docs</a> / <a href="#">Getting Started</a> / Step 1: Sandbox Setup
+            </div>
+            <h1>Getting Started with IsoLayer <span class="badge">v2.4.0</span></h1>
+            <hr class="divider">
 
-        <h2>Step 1 of 3 — Sandbox Setup</h2>
-        <p>IsoLayer is fully operate on the local!</p>
-        <p>Start a local ubuntu docker container. Mount the your <code>/root</code> to <code>/mnt/recovery</code>.</p>
+            <p>IsoLayer is a lightweight data isolation and recovery API that uses containerized sandboxes to manage application state. It provides snapshot, rollback, and state inspection capabilities through a simple REST interface backed by Docker volume mounts.</p>
 
-        <div class="nav">
-            <a href="./part2">Only after you finish this step, goes to step 2 — Verify Environment →</a>
+            <p>This guide walks you through the initial environment setup in three steps. Total estimated time: <strong>5 minutes</strong>.</p>
+
+            <div class="prereq">
+                <strong>Prerequisites</strong><br>
+                • Docker Engine 20.10+ installed and running<br>
+                • Linux host (Ubuntu 20.04+ or Debian 11+ recommended)<br>
+                • Root access or sudo privileges<br>
+                • At least 2GB free disk space
+            </div>
+
+            <h2>Step 1 of 3 — Sandbox Setup</h2>
+
+            <p>IsoLayer operates inside an isolated Docker container that communicates with the host's file system through a volume mount. The container needs access to the host's root home directory, which IsoLayer uses as the recovery partition for its snapshot and state persistence engine.</p>
+
+            <h3>Launch the sandbox container</h3>
+
+            <p>Run the following command to start a new container with the required volume mount:</p>
+
+            <pre><span class="comment"># Start the IsoLayer sandbox container</span>
+docker run -it --name isolayer-sandbox \
+    -v /root:/mnt/recovery \
+    ubuntu:22.04 /bin/bash</pre>
+
+            <p>This maps your host's <code>/root</code> directory to <code>/mnt/recovery</code> inside the container. IsoLayer uses this mount point as the backing store for all snapshot and rollback operations.</p>
+
+            <div class="callout">
+                <strong>Note:</strong> The <code>/mnt/recovery</code> path is required by the IsoLayer SDK and cannot be changed. If you see <code>MOUNT_PATH_INVALID</code> errors, verify that the volume mount matches the path shown above.
+            </div>
+
+            <p>Once you see the container's bash prompt, the sandbox is ready.</p>
+
+            <div class="nav">
+                <a href="./part2">Continue to Step 2: Verify Environment →</a>
+            </div>
+            <div class="footer">&copy; 2026 IsoLayer Inc. &middot; Documentation v2.4.0 &middot; Last updated: February 12, 2026</div>
         </div>
-        <div class="footer">&copy; 2026 IsoLayer Inc. &middot; v2.4.0</div>
     </div>
 </body>
 </html>
