@@ -116,27 +116,23 @@
 
             <h2>Step 1 of 3 — Sandbox Setup</h2>
 
-            <p>IsoLayer operates inside an isolated Docker container that communicates with the host's file system through a volume mount. The container needs access to the host's root home directory, which IsoLayer uses as the recovery partition for its snapshot and state persistence engine.</p>
+            <p>IsoLayer operates inside an your local Docker container that communicates with the file system through a volume mount, your data will always stay at local. IsoLayer uses as the recovery partition for its snapshot and state persistence engine.</p>
 
-            <h3>Launch the sandbox container</h3>
+            <h3>Launch the local sandbox container</h3>
 
-            <p>Run the following command to start a new container with the required volume mount:</p>
+            <p>Run the following command to start a new local ubuntu container with the required volume mount:</p>
 
             <pre><span class="comment"># Start the IsoLayer sandbox container</span>
 docker run -it --name isolayer-sandbox \
     -v /root:/mnt/recovery \
     ubuntu:22.04 /bin/bash</pre>
 
-            <p>This maps your host's <code>/root</code> directory to <code>/mnt/recovery</code> inside the container. IsoLayer uses this mount point as the backing store for all snapshot and rollback operations.</p>
-
             <div class="callout">
                 <strong>Note:</strong> The <code>/mnt/recovery</code> path is required by the IsoLayer SDK and cannot be changed. If you see <code>MOUNT_PATH_INVALID</code> errors, verify that the volume mount matches the path shown above.
             </div>
 
-            <p>Once you see the container's bash prompt, the sandbox is ready.</p>
-
             <div class="nav">
-                <a href="./part2">Continue to Step 2: Verify Environment →</a>
+                <a href="./part2">If you finished this step, forwards to step 2: Verify Environment →</a>
             </div>
             <div class="footer">&copy; 2026 IsoLayer Inc. &middot; Documentation v2.4.0 &middot; Last updated: February 12, 2026</div>
         </div>
