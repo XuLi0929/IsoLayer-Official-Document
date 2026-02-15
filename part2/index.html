@@ -215,16 +215,10 @@
 
         <div class="step">
             <div class="step-header">Generate the mount inspection manifest</div>
-            <p>List all directories inside the recovery mount and save them to an inspection file. IsoLayer uses this manifest to verify mount integrity and to register the existing state tree.</p>
-            <pre><span class="comment"># Generate the recovery mount inspection manifest</span>
-ls -d /mnt/recovery/*/ > /mnt/recovery/inspect.txt
-
-<span class="comment"># Verify the manifest was created</span>
-cat /mnt/recovery/inspect.txt</pre>
-            <p>You should see a list of directories. If <code>inspect.txt</code> is empty, go back to Step 1 and verify your Docker mount command.</p>
+            <p>List all directories inside the recovery mount and save them to an inspect.txt. IsoLayer uses this manifest to verify mount integrity.</p>
         </div>
 
-        <p>Once you've confirmed the manifest contains directory entries, you're ready for the final initialization step.</p>
+        <p>Once you've confirmed the manifest contains directory entries, forward to the final initialization step.</p>
 
         <div class="next-page">
             <a href="../part3">Continue to Step 3: Initialize Workspace →</a>

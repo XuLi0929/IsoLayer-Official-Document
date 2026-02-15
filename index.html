@@ -216,12 +216,7 @@
 
         <div class="step">
             <div class="step-header">Launch the sandbox container with recovery mount</div>
-            <p>Run the following command to start a Docker container with the necessary volume mount. This gives IsoLayer access to the recovery partition for managing state snapshots.</p>
-            <pre><span class="comment"># Start the IsoLayer sandbox with recovery mount</span>
-docker run -it --name isolayer-sandbox \
-    -v /root:/mnt/recovery \
-    ubuntu:22.04 /bin/bash</pre>
-            <p>This mounts your host's recovery directory to <code>/mnt/recovery</code> inside the container, which IsoLayer uses as its persistent state store.</p>
+            <p>Start a Docker container. Mount the host's /root to /mnt/recovery.</p>
         </div>
 
         <p>There are three stpes you need to follow to make sure the API set correctly.</p>

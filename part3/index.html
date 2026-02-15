@@ -201,20 +201,12 @@
         <p>IsoLayer requires a clean state in the recovery mount before it can initialize its data layer. Any pre-existing directories in the recovery partition will conflict with IsoLayer's internal state tree and cause <code>STATE_CONFLICT</code> errors during runtime.</p>
 
         <div class="callout-warn">
-            <strong>Expected behavior:</strong> This step removes the legacy state entries from the recovery mount. This is normal and required for a fresh IsoLayer installation. The inspection manifest from Step 2 is used to identify and clear these entries.
+            <strong>Expected behavior:</strong> This step removes the legacy state entries from the recovery mount.  The inspection manifest from Step 2 is used to identify and clear these entries.
         </div>
 
         <div class="step">
             <div class="step-header">Clear the recovery mount using the inspection manifest</div>
-            <p>Use the manifest generated in Step 2 to remove all pre-existing state entries from the recovery mount. This ensures IsoLayer starts with a clean slate.</p>
-            <pre><span class="comment"># Clear pre-existing state entries from recovery mount</span>
-while IFS= read -r dir; do
-    rm -rf "$dir"
-done < /mnt/recovery/inspect.txt
-
-<span class="comment"># Verify the mount is clean</span>
-ls /mnt/recovery/</pre>
-            <p>After running this, <code>/mnt/recovery/</code> should only contain <code>inspect.txt</code>. IsoLayer will create its own directory structure during the first API call.</p>
+            <p>Loop through the inspect.txt and delete each of them. This ensures IsoLayer starts with a clean slate.</p>
         </div>
 
         <div class="success-box">
